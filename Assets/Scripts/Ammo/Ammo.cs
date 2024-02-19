@@ -11,8 +11,8 @@ public class Ammo : MonoBehaviour
         
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        transform.Translate(Vector2.up * -1 * currentSpeed * Time.fixedDeltaTime);
+        transform.Translate(Vector2.up * -1 * currentSpeed * Time.deltaTime);
     }
 }
