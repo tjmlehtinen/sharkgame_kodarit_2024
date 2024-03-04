@@ -29,10 +29,23 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    void Update()
+    {
+        Shoot();
+    }
+    
     private void Move()
     {
         Vector2 moveInput = controls.Player.Move.ReadValue<Vector2>();
         Vector2 movement = moveInput * 5 * Time.fixedDeltaTime;
         body.MovePosition(body.position + movement);
+    }
+
+    private void Shoot()
+    {
+        if (controls.Player.Shoot.triggered)
+        {
+            Debug.Log("BANG!");
+        }
     }
 }
