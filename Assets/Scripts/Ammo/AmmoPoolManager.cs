@@ -25,4 +25,16 @@ public class AmmoPoolManager : MonoBehaviour
         }
     }
 
+    public GameObject GetAmmo()
+    {
+        GameObject ammo = pool.Dequeue();
+        ammo.SetActive(true);
+        return ammo;
+    }
+
+    public void ReturnAmmo(GameObject ammo)
+    {
+        ammo.SetActive(false);
+        pool.Enqueue(ammo);
+    }
 }

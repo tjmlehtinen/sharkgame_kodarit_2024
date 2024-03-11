@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D body;
     private MainInput controls;
+    public Transform gunTransform;
 
     void Awake()
     {
@@ -45,7 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         if (controls.Player.Shoot.triggered)
         {
-            Debug.Log("BANG!");
+            GameObject ammo = AmmoPoolManager.Instance.GetAmmo();
+            ammo.transform.position = gunTransform.position;
         }
     }
 }
