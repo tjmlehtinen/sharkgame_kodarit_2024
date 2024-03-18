@@ -27,9 +27,17 @@ public class AmmoPoolManager : MonoBehaviour
 
     public GameObject GetAmmo()
     {
-        GameObject ammo = pool.Dequeue();
-        ammo.SetActive(true);
-        return ammo;
+        if (pool.Count > 0)
+        {
+            GameObject ammo = pool.Dequeue();
+            ammo.SetActive(true);
+            return ammo;
+        }
+        else
+        {
+            GameObject newAmmo = Instantiate(ammoPrefab);
+            return newAmmo;
+        }
     }
 
     public void ReturnAmmo(GameObject ammo)
