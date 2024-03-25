@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Aim();
         Shoot();
     }
     
@@ -49,5 +50,13 @@ public class PlayerController : MonoBehaviour
             GameObject ammo = AmmoPoolManager.Instance.GetAmmo();
             ammo.transform.position = gunTransform.position;
         }
+    }
+
+    private void Aim()
+    {
+        Vector2 aimInput = controls.Player.Aim.ReadValue<Vector2>();
+        Vector2 aimDirection = aimInput;
+        float angle = Mathf.Atan2(aimDirection.x, -aimDirection.y) * Mathf.Rad2Deg;
+        Debug.Log(angle);
     }
 }
